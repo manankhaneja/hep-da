@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Mar 23 18:50:07 2018
+Created on Fri Mar 23 18:50:07 2018 - constantly improving ever since
 
 @author: Manan Khaneja
 """
@@ -17,7 +17,7 @@ def screener (conditions):
         line=f.readline()
         while line:
             words= line.split()
-            for condition in conditions:    
+            for condition in conditions:
                 if condition in words:
                     k.write(line)
                     count+=1
@@ -27,7 +27,7 @@ def screener (conditions):
                 k.write(line)
                 line=f.readline()
                 k.write(line)
-            line= f.readline()   
+            line= f.readline()
         f.close()
         k.close()
     return(count)
@@ -47,12 +47,5 @@ while flag:
     temp=input("Enter the condition\n")
     conditions.append(temp)
     flag=int(input("Do you want to give another condition? \n0. NO \n1. YES\n"))
-count= screener(conditions)    
-print("The number of such particles is ", count)  
-
-      
-        
-    
-
-     
-        
+count= screener(conditions)
+print("The number of such particles is ", count)
