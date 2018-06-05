@@ -7,9 +7,9 @@ Created on Mon Jun  4 22:07:53 2018
 import os
 import math
 
-def thetacalc(calcwords):       #For calculation of cosine theta i.e. the angle between position and momentum      
+def thetacalc(calcwords):       #For calculation of cosine theta i.e. the angle between position and momentum
     numerator = calcwords[0]*calcwords[3] + calcwords[1]*calcwords[4] + calcwords[2]*calcwords[5]
-    num1 = math.sqrt( calcwords[0]*calcwords[0] + calcwords[1]*calcwords[1] + calcwords[2]*calcwords[2] ) 
+    num1 = math.sqrt( calcwords[0]*calcwords[0] + calcwords[1]*calcwords[1] + calcwords[2]*calcwords[2] )
     num2 = math.sqrt( calcwords[3]*calcwords[3] + calcwords[4]*calcwords[4] + calcwords[5]*calcwords[5] )
     denominator = num1 * num2
     costheta = 1.0*numerator/denominator
@@ -32,7 +32,8 @@ def newoutfile():
         costheta = thetacalc(calcwords)
         new.write(words[4] + ' ' )
         new.write(str(costheta))
+        new.write(' ' + words[12])
         new.write(' ' + words[14])
-        new.write("\n")     
+        new.write("\n")
         line = old.readline()
-newoutfile()        
+newoutfile()
