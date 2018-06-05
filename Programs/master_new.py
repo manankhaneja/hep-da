@@ -21,12 +21,6 @@ def screener (conditions):
                 if condition in words:
                     k.write(line)
                     count+=1
-            if "###" in words:
-                k.write(line)
-            elif "-->" in words:
-                k.write(line)
-                line=f.readline()
-                k.write(line)
             line= f.readline()
         f.close()
         k.close()
