@@ -4,6 +4,9 @@ Created on Mon Jun  4 22:07:53 2018
 
 @author: Manan Khaneja
 """
+
+# take a file in a directory, reduces it by removing the unnecessary columns and calculates cosine theta
+# and then saving it as NEWoriginal_name.txt in the same directory
 import os
 import math
 
@@ -16,17 +19,18 @@ def thetacalc(calcwords):       #For calculation of cosine theta i.e. the angle 
     return (costheta)
 
 def newoutfile():
-    user_input = input('Enter the path of your file: \n')
-    assert os.path.isfile(user_input)
+    dir_path = input('Enter the path of your directory: \n')
+    assert os.path.isdir(dir_path)
+    filename = input('What is the name of file ?\n')
+    user_input = os.path.join(dir_path,filename)
     old = open(user_input,'r+')
-    filename = input('What is the name of file you want to save the output in ?\n')
-    save_path = input('Enter the path of the directory where the output file has to be saved \n')
-    complete_name = os.path.join(save_path,filename)
-    new = open(complete_name,'a+')
+    new_name = 'NEW' + filename
+    save_path = os.path.join(dir_path,new_name)
+    new = open(save_path,'a+')
     line = old.readline()
     while line:
         words = line.split()
-        calcwords=[]
+        calcwords = []
         for index in range(6,12,1):         #6 to 11 are the indices in the real file that correspond to posX,Y,Z momentumX,Y,Z respectively
             calcwords.append(float(words[index]))
         costheta = thetacalc(calcwords)
