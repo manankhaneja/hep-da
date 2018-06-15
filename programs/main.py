@@ -57,9 +57,9 @@ def dir_file_ext():
         old_del = int(input("Do you want to delete the originally created file ? \n0. NO \n1. YES\n"))
         if old_del:
             os.remove(complete_name)
-    flag = int(input("Do you want to call the plotting function? \n0. NO \n1. YES\n"))
-    if flag:
-        plot.plot()
 
-
-dir_file_ext()
+task = int(input("What do you want to do -\n0. Make a txt file with given conditions from a directory \n1. Call the plotting function\n"))
+if task:
+    plot.plot()
+else:
+    dir_file_ext()
