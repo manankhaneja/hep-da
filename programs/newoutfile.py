@@ -7,9 +7,9 @@ Created on Mon Jun  4 22:07:53 2018
 
 # take a file in a directory, reduces it by removing the unnecessary columns and calculates cosine theta
 # and then saving it as NEWoriginal_name.txt in the same directory
-import os
+import variables
 import math
-
+import os
 def thetacalc(calcwords):       #For calculation of cosine theta i.e. the angle between position and momentum
     numerator = calcwords[0]*calcwords[3] + calcwords[1]*calcwords[4] + calcwords[2]*calcwords[5]
     num1 = math.sqrt( calcwords[0]*calcwords[0] + calcwords[1]*calcwords[1] + calcwords[2]*calcwords[2] )
@@ -19,13 +19,9 @@ def thetacalc(calcwords):       #For calculation of cosine theta i.e. the angle 
     return (costheta)
 
 def newoutfile():
-    dir_path = input('Enter the path of your directory: \n')
-    assert os.path.isdir(dir_path)
-    filename = input('What is the name of file ?\n')
-    user_input = os.path.join(dir_path,filename)
-    old = open(user_input,'r+')
-    new_name = 'NEW' + filename
-    save_path = os.path.join(dir_path,new_name)
+    old = open(variables.complete_name,'r+')
+    new_name = 'NEW' + variables.filename
+    save_path = os.path.join(variables.dir_path,new_name)
     new = open(save_path,'a+')
     line = old.readline()
     while line:
@@ -40,4 +36,3 @@ def newoutfile():
         new.write(' ' + words[14])
         new.write("\n")
         line = old.readline()
-newoutfile()

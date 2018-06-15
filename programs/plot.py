@@ -4,6 +4,10 @@ Created on Wed May 16 15:00:33 2018
 
 @author: Manan Khaneja
 """
+import variables
+import os
+import matplotlib.pyplot as plt
+
 def plot():
     print("Reference for column numbers in the new file \n")
     print("column number 0 = eKin\n")
@@ -11,15 +15,12 @@ def plot():
     print("column number 2 = Detection height\n")
     print("column number 3 = interaction type\n")
 
-    import os
-    import matplotlib.pyplot as plt
     ax = plt.axes()
-    user_input =input("Enter the path of your directory: \n")
-    assert os.path.isdir(user_input), "I did not find the directory"
+    assert os.path.isdir(variables.dir_path), "I did not find the directory"
     print("\n")
     index,flag = 1,1
     plot_name = "plot"
-    var_data = [[],[],[],[],[]]             #can plot maximum 5 plots simultaneously
+    var_data = [[],[],[],[],[],[],[],[],[],[]]             #can plot maximum 10 plots simultaneously
     bins = int(input("how many bins do you want to use? \n"))
     min = int(input("Enter the range integer -start value \n"))
     max = int(input("Enter the range integer -end value \n"))
@@ -29,7 +30,7 @@ def plot():
     while flag:
         filename = input("Enter the filename \n")
         particle = input("Enter the associated particle \n")
-        file_path = os.path.join(user_input,filename)
+        file_path = os.path.join(variables.dir_path,filename)
         plot_name = plot_name + '_' + filename[3:len(filename)-4:1]
         k = open(file_path, "r+")
         var_data[index] = []
@@ -48,7 +49,4 @@ def plot():
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.title(plot_name)
-    plt.savefig(user_input + '/' + plot_name + '.png', bbox_inches='tight', dpi = 500)
-
-
-plot()
+    plt.savefig(variables.dir_path + '/' + plot_name + '.png', bbox_inches='tight', dpi = 500)
